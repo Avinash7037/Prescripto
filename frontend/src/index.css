@@ -3,3 +3,13 @@
 @theme {
   --color-primary: #5f6fff;
 }
+
+@layer components {
+  .nav-item hr {
+    @apply hidden;
+  }
+
+  .nav-item.active hr {
+    @apply block h-0.5 w-full bg-primary mt-1;
+  }
+}
