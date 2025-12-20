@@ -4,6 +4,14 @@
   --color-primary: #5f6fff;
 }
 
+/* custom grid utility */
+@layer utilities {
+  .grid-auto-fill {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+}
+
+/* navbar underline logic */
 @layer components {
   .nav-item hr {
     @apply hidden;
@@ -14,6 +22,7 @@
   }
 }
 
+/* hide scrollbar */
 ::-webkit-scrollbar {
-  @apply hidden;
+  display: none;
 }
