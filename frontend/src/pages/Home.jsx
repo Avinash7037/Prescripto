@@ -1,10 +1,12 @@
 import React from "react";
-import header from "../components/header";
+import Header from "../components/header";
+import SpecialityMenu from "../components/SpecialityMenu";
 
 const Home = () => {
   return (
     <div>
-      <header />
+      <Header />
+      <SpecialityMenu />
     </div>
   );
 };

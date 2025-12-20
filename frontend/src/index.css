@@ -13,3 +13,7 @@
     @apply block h-0.5 w-full bg-primary mt-1;
   }
 }
+
+::-webkit-scrollbar {
+  @apply hidden;
+}
