@@ -1,13 +1,13 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useMemo, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { AppContext } from "../context/AppContext";
 
 const Doctors = () => {
   const { speciality } = useParams();
   const navigate = useNavigate();
+  const [showFilter, setShowFilter] = useState(false);
 
   const { doctors } = useContext(AppContext);
-  const [filterDoc, setFilterDoc] = useState([]);
 
   const specialities = [
     "General physician",
@@ -18,12 +18,11 @@ const Doctors = () => {
     "Gastroenterologist",
   ];
 
-  useEffect(() => {
+  const filterDoc = useMemo(() => {
     if (speciality) {
-      setFilterDoc(doctors.filter((doc) => doc.speciality === speciality));
-    } else {
-      setFilterDoc(doctors);
+      return doctors.filter((doc) => doc.speciality === speciality);
     }
+    return doctors;
   }, [doctors, speciality]);
 
   return (
@@ -31,8 +30,21 @@ const Doctors = () => {
       <p className="text-gray-600">Browse through the doctors specialist.</p>
 
       <div className="flex flex-col sm:flex-row items-start gap-5 mt-5">
-        {/* Left side – Specialities */}
-        <div className="flex flex-col gap-4 text-sm text-gray-600">
+        {/* Filter button */}
+        <button
+          className={`py-1 px-3 border rounded text-sm transition-all sm:hidden ${
+            showFilter ? "bg-primary text-white" : ""
+          }`}
+          onClick={() => setShowFilter((prev) => !prev)}
+        >
+          Filters
+        </button>
+
+        <div
+          className={`flex-col gap-4 text-sm text-gray-600 ${
+            showFilter ? "flex" : "hidden sm:flex"
+          }`}
+        >
           {specialities.map((item) => (
             <p
               key={item}
@@ -50,7 +62,6 @@ const Doctors = () => {
           ))}
         </div>
 
-        {/* Right side – Doctors */}
         <div className="w-full grid grid-auto-fill gap-4 gap-y-6">
           {filterDoc.map((item) => (
             <div
