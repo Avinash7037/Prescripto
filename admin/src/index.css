@@ -3,3 +3,8 @@
 @theme {
   --color-primary: #5f6fff;
 }
+
+/* hide scrollbar */
+::-webkit-scrollbar {
+  display: none;
+}
