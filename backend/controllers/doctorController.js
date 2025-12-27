@@ -24,17 +24,34 @@ const changeAvailablity = async (req, res) => {
       available: !docData.available,
     });
 
-    res.status(200).json({
+    return res.status(200).json({
       success: true,
       message: "Availability changed",
     });
   } catch (error) {
     console.log(error);
-    res.status(500).json({
+    return res.status(500).json({
       success: false,
       message: error.message,
     });
   }
 };
 
-export { changeAvailablity };
+const doctorList = async (req, res) => {
+  try {
+    const doctors = await doctorModel.find({}).select("-password -email");
+
+    return res.status(200).json({
+      success: true,
+      doctors,
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+export { changeAvailablity, doctorList };
