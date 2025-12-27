@@ -58,7 +58,9 @@ const AddDoctor = () => {
       } else {
         toast.error(data.message);
       }
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -225,7 +227,7 @@ const AddDoctor = () => {
 
         <button
           type="submit"
-          className="bg-primary px-10 py-3 mt-4 text-white rounded-full"
+          className="bg-primary px-10 py-3 mt-4 text-white rounded-full cursor-pointer"
         >
           Add doctor
         </button>
