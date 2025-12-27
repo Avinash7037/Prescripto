@@ -121,4 +121,6 @@ const updateProfile = async (req, res) => {
   }
 };
 
+// API to book appointment
+
 export { registerUser, loginUser, getProfile, updateProfile };
