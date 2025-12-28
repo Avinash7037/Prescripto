@@ -192,7 +192,8 @@ const listAppointment = async (req, res) => {
 // API to cancel appointment
 const cancelAppointment = async (req, res) => {
   try {
-    const { userId, appointmentId } = req.body;
+    const { appointmentId } = req.body;
+    const userId = req.userId;
 
     const appointmentData = await appointmentModel.findById(appointmentId);
 
@@ -228,6 +229,8 @@ const cancelAppointment = async (req, res) => {
     res.json({ success: false, message: error.message });
   }
 };
+
+// API to make payment of appointment using razorpay
 
 export {
   registerUser,
