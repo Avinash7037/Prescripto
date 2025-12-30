@@ -20,7 +20,9 @@ const Doctors = () => {
 
   const filterDoc = useMemo(() => {
     if (speciality) {
-      return doctors.filter((doc) => doc.speciality === speciality);
+      return doctors.filter(
+        (doc) => doc.speciality.toLowerCase() === speciality.toLowerCase()
+      );
     }
     return doctors;
   }, [doctors, speciality]);
