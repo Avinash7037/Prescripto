@@ -3,6 +3,7 @@ import { assets } from "../assets/assets";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AppContext } from "../context/AppContext";
+import { DoctorContext } from "../../../admin/src/context/DoctorContext";
 
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);

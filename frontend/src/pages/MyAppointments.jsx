@@ -8,7 +8,6 @@ const MyAppointments = () => {
   const { backendUrl, token, getDoctorsData } = useContext(AppContext);
 
   const [appointments, setAppointments] = useState([]);
-  const navigate = useNavigate();
 
   const months = [
     "Jan",
@@ -31,6 +30,8 @@ const MyAppointments = () => {
       dateArray[0] + " " + months[Number(dateArray[1]) - 1] + " " + dateArray[2]
     );
   };
+
+  const navigate = useNavigate();
 
   const getUserAppointments = async () => {
     try {
@@ -162,12 +163,12 @@ const MyAppointments = () => {
 
             <div></div>
             <div className="flex flex-col gap-2 justify-end">
-              {!item.cancelled && item.payment && (
+              {!item.cancelled && item.payment && !item.isCompleted && (
                 <button className="sm:min-w-48 py-2 border rounded text-stone-500 bg-indigo-50">
                   Paid
                 </button>
               )}
-              {!item.cancelled && !item.payment && (
+              {!item.cancelled && !item.payment && !item.isCompleted && (
                 <button
                   onClick={() => appointmentRazorpay(item._id)}
                   className="text-sm text-stone-500 text-center sm:min-w-48 py-2 border rounded hover:bg-primary hover:text-white transition-all duration-300 "
@@ -175,7 +176,7 @@ const MyAppointments = () => {
                   Pay Online
                 </button>
               )}
-              {!item.cancelled && (
+              {!item.cancelled && !item.isCompleted && (
                 <button
                   onClick={() => cancelAppointment(item._id)}
                   className="text-sm text-stone-500 text-center sm:min-w-48 py-2 border rounded hover:bg-red-600 hover:text-white transition-all duration-300 cursor-pointer "
@@ -184,9 +185,15 @@ const MyAppointments = () => {
                 </button>
               )}
 
-              {item.cancelled && (
+              {item.cancelled && !item.isCompleted && (
                 <button className="sm:min-w-48 py-2 border border-red-500 text-red-500">
                   Appointment cancelled
+                </button>
+              )}
+
+              {item.isCompleted && (
+                <button className="sm:min-w-48 py-2 border border-green-500 rounded text-green-500">
+                  Completed
                 </button>
               )}
             </div>
