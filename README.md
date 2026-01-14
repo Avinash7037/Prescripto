@@ -8,7 +8,7 @@ Experience Prescripto in action:
 - **Live link**: [https://prescripto-frontend-hh0c.onrender.com](https://prescripto-frontend-hh0c.onrender.com)
 - Admin Login : Email- admin@prescript.com , Password: doc43avi9
 
-> **Note**: The application may take a moment to load initially as it's hosted on Render's free tier.
+> **Note**: The application may take a moment to load initially as it's hosted on Render's free tier. please wait 
 
 ## 🚀 Features
 
