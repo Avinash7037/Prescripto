@@ -1,4 +1,6 @@
-# Prescripto - Doctor Appointment Booking Platform
+# Prescripto 
+
+> **Doctor Appointment Booking Platform**
 
 A user-friendly doctor appointment booking platform that bridges the gap between patients and healthcare providers by enabling seamless scheduling and management of visits, reducing waiting times, and offering an efficient, intuitive experience for patients, doctors, and administrators.
 ## 🌐 Live Demo
